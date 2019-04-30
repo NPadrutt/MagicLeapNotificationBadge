@@ -53,21 +53,22 @@ public class EyeTracking : MonoBehaviour {
 
                     if (DetailObjectToOpen != null && !isDetailOpen) {
                         var heading = TargetTransform.position + TargetTransform.forward * 3;
-                        heading.x = 0;
-                        heading.y = 0;
 
                         DetailObjectToOpen.transform.position = heading;
                         DetailObjectToOpen.SetActive(true);
                         isDetailOpen = true;
                     }
-                } else if (isDetailOpen && rayHit.transform.position != DetailObjectToOpen.transform.position) {
+                } else if (isDetailOpen && rayHit.transform.position == DetailObjectToOpen.transform.position) {
+                    meshRenderer.material = NonFocusedMaterial;
+                } else {
                     DetailObjectToOpen.SetActive(false);
                     isDetailOpen = false;
                     meshRenderer.material = NonFocusedMaterial;
-                } else {
-                    meshRenderer.material = NonFocusedMaterial;
                 }
             } else {
+                DetailObjectToOpen.SetActive(false);
+
+                isDetailOpen = false;
                 meshRenderer.material = NonFocusedMaterial;
             }
         }
