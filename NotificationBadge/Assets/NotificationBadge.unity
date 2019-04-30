@@ -634,10 +634,13 @@ GameObject:
   - component: {fileID: 1297536662}
   - component: {fileID: 1297536661}
   - component: {fileID: 1297536660}
-  - component: {fileID: 1297536664}
   - component: {fileID: 1297536665}
+  - component: {fileID: 1297536664}
+  - component: {fileID: 1297536668}
+  - component: {fileID: 1297536667}
+  - component: {fileID: 1297536666}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: NotificationBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +713,7 @@ Transform:
   m_GameObject: {fileID: 1297536659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.148, y: 0.1, z: 2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.05}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children:
   - {fileID: 194878961}
   m_Father: {fileID: 0}
@@ -744,6 +747,57 @@ MonoBehaviour:
   FocusedMaterial: {fileID: 2100000, guid: 9af4dfb23cf1ff943ad8ad26cbc824c4, type: 2}
   NonFocusedMaterial: {fileID: 2100000, guid: dab2756d90340d34da3b949678654d4b, type: 2}
   DetailObjectToOpen: {fileID: 182422551}
+--- !u!114 &1297536666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297536659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86447e1e765c09a45a2e35f3a68c7ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagalongDistance: 2
+  EnforceDistance: 1
+  PositionUpdateSpeed: 9.8
+  SmoothMotion: 1
+  SmoothingFactor: 0.75
+--- !u!114 &1297536667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297536659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b30c84ae6fc674e8c916277dde9fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnscaledTime: 1
+  PositionPerSecond: 30
+  RotationDegreesPerSecond: 720
+  RotationSpeedScaler: 0
+  ScalePerSecond: 5
+  SmoothLerpToTarget: 0
+  SmoothPositionLerpRatio: 0.5
+  SmoothRotationLerpRatio: 0.5
+  SmoothScaleLerpRatio: 0.5
+--- !u!65 &1297536668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297536659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1722766466
 GameObject:
   m_ObjectHideFlags: 0

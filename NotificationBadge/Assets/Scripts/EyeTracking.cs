@@ -15,9 +15,7 @@ public class EyeTracking : MonoBehaviour {
     private Vector3 heading;
     private MeshRenderer meshRenderer;
     private bool isDetailOpen;
-
-
-
+    
     // Start is called before the first frame update
     void Start() {
         if (DetailObjectToOpen != null) {
