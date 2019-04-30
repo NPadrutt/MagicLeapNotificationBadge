@@ -18,16 +18,18 @@ public class EyeTracking : MonoBehaviour {
     
     // Start is called before the first frame update
     void Start() {
-        if (DetailObjectToOpen != null) {
-            DetailObjectToOpen.SetActive(false);
-        }
-
         if (TargetTransform == null) {
             TargetTransform = CameraCache.Main.transform;
         }
 
         MLEyes.Start();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
+    }
+
+    void Awake() {
+        if (DetailObjectToOpen != null) {
+            DetailObjectToOpen.SetActive(false);
+        }
     }
 
     private void OnDisable() {
@@ -58,9 +60,13 @@ public class EyeTracking : MonoBehaviour {
                         DetailObjectToOpen.SetActive(true);
                         isDetailOpen = true;
                     }
-                } else if (isDetailOpen && rayHit.transform.position == DetailObjectToOpen.transform.position) {
+                }
+                else if (isDetailOpen && rayHit.transform.position == DetailObjectToOpen.transform.position)
+                {
                     meshRenderer.material = NonFocusedMaterial;
-                } else {
+                }
+                else
+                {
                     DetailObjectToOpen.SetActive(false);
                     isDetailOpen = false;
                     meshRenderer.material = NonFocusedMaterial;
