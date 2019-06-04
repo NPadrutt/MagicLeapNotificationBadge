@@ -19,6 +19,7 @@ public class EyeTracking : MonoBehaviour
     private MeshRenderer meshRenderer;
     private bool isDetailOpen;
     private int missedCounter;
+    private int hitCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -63,18 +64,22 @@ public class EyeTracking : MonoBehaviour
             if (Physics.Raycast(TargetTransform.position, heading, out rayHit, 10.0f))
             {
                 missedCounter = 0;
+                hitCounter++;
 
                 if (rayHit.collider.gameObject == gameObject)
                 {
-                    meshRenderer.material = FocusedMaterial;
-
-                    if (DetailObjectToOpen != null && !isDetailOpen)
+                    if (hitCounter >= 2)
                     {
-                        var heading = TargetTransform.position + TargetTransform.forward * 2;
+                        meshRenderer.material = FocusedMaterial;
 
-                        DetailObjectToOpen.transform.position = heading;
-                        DetailObjectToOpen.SetActive(true);
-                        isDetailOpen = true;
+                        if (DetailObjectToOpen != null && !isDetailOpen)
+                        {
+                            var heading = TargetTransform.position + TargetTransform.forward * 1.9f;
+
+                            DetailObjectToOpen.transform.position = heading;
+                            DetailObjectToOpen.SetActive(true);
+                            isDetailOpen = true;
+                        }
                     }
                 }
                 else if (rayHit.collider.gameObject == DetailObjectToOpen || rayHit.collider.gameObject.tag == "ReadingArea")
@@ -86,12 +91,14 @@ public class EyeTracking : MonoBehaviour
                     DetailObjectToOpen.SetActive(false);
                     isDetailOpen = false;
                     missedCounter = 0;
+                    hitCounter = 0;
                     meshRenderer.material = NonFocusedMaterial;
                 }
             }
             else
             {
                 missedCounter++;
+                hitCounter = 0;
 
                 if (missedCounter >= 8)
                 {
